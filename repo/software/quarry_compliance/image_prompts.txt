@@ -1,0 +1,14 @@
+Midjourney / DALL·E / Stable Diffusion prompt (print poster):
+
+"Design a high-resolution, print-ready A3 compliance board styled like an official government notice for quarry operations in India. Vertical A3 poster, pale cream paper texture, faint government seal watermark behind the header. Header: large serif text 'COMPLIANCE NOTICE — QUARRY OPERATIONS' in dark blue with a thin saffron underline. Three horizontally aligned icon panels near the top: shield icon (regulatory compliance), safety helmet icon (worker safety), eco-leaf icon (environmental protection). Clean, formal layout with legible bulleted sections:
+
+- Mines & Minerals (Development & Regulation) Act, 1957 — licensing and reporting.
+- Mines Act, 1952 & state rules — safety and blasting controls.
+- Environment (Protection) Act, 1986 & EIA notifications — clearances.
+- Air & Water Acts — obtain SPCB/CPCB consents.
+- CPCB/SPCB dust emission limits (PM10/PM2.5) — implement monitoring.
+
+Include a highlighted box titled 'Dust Emission Limits (Follow CPCB/SPCB Standards)' and a checklist column 'Worker Safety' with PPE, training, safe blasting, signage, emergency response. Color palette: dark blue, saffron accent, forest green, neutral grays. Typography: authoritative serif header, legible sans-serif body. Output two versions: print-ready A3 and simplified square social tile. --v 5 --ar 2:3 --quality 2"
+
+Stable Diffusion short form:
+"Official compliance poster, India quarry, shield helmet leaf icons, authoritative layout, cream paper texture, saffron accent, dark blue header, readable bulleted legal items, high detail, print-ready"

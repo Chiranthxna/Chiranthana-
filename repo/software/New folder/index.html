@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="page-title">Live Dust Sensor Dashboard</title>
+  <link rel="stylesheet" href="i18n.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <nav class="top-nav">
+      <a href="index.html" class="nav-link active" data-i18n="nav-live">Live Dust Sensors</a>
+      <a href="health-risks.html" class="nav-link" data-i18n="nav-health">Health Risks</a>
+      <a href="safety-measures.html" class="nav-link" data-i18n="nav-safety">Safety Measures</a>
+    </nav>
+
+    <section class="page active" id="page-live">
+      <div class="page-header">
+        <div>
+          <p class="eyebrow" data-i18n="dustData">Live Dust Data</p>
+          <h1 data-i18n="page-live-title">Live Dust Sensors</h1>
+          <p class="page-description" data-i18n="page-live-subtitle">Monitor dust levels in real time and capture compliant records.</p>
+        </div>
+        <div class="page-actions">
+          <button class="btn btn-secondary back-btn" type="button" data-i18n="back">Back</button>
+          <div class="toggle-group">
+            <span class="toggle-label" data-i18n="toggle-label">Sensor Power</span>
+            <label class="toggle-switch">
+              <input id="sensorToggle" type="checkbox" />
+              <span class="toggle-slider"></span>
+            </label>
+            <span id="toggleStateText" class="toggle-state-text" data-i18n="toggle-off">OFF</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="page-body">
+        <div class="status-row">
+          <div class="status-card" id="syncStatus">
+            <span class="status-dot"></span>
+            <div>
+              <p data-i18n="device-status">Device Status</p>
+              <strong id="syncText" data-i18n="disconnected">Disconnected</strong>
+            </div>
+          </div>
+          <div class="status-card micro-sd-indicator" id="microSDIndicator">
+            <span class="status-dot micro-sd"></span>
+            <div>
+              <p data-i18n="recorded-data-header">Recorded Data (Micro SD)</p>
+              <strong id="microSDCount">0 saved records</strong>
+            </div>
+          </div>
+        </div>
+
+        <main class="grid-layout">
+          <section class="panel readings-panel">
+            <div class="panel-header">
+              <h2 data-i18n="current-readings">Current Readings</h2>
+              <span class="pill" id="readingLabel" data-i18n="live">Live</span>
+            </div>
+            <div class="reading-cards">
+              <article class="metric-card">
+                <p data-i18n="pm25">PM2.5</p>
+                <h3 id="pm25Value">0 µg/m³</h3>
+                <p class="metric-status" id="pm25Status" data-i18n="safe">Safe</p>
+                <div class="wave-meter safe" id="pm25Wave" aria-label="PM2.5 safety wave">
+                  <svg class="wave-line" viewBox="0 0 240 80" preserveAspectRatio="none">
+                    <path d="M0 40 C30 10, 50 10, 80 40 S130 70, 160 40 S210 10, 240 40" />
+                  </svg>
+                </div>
+                <div class="wave-caption safe" id="pm25WaveLabel">Safe</div>
+              </article>
+              <article class="metric-card">
+                <p data-i18n="pm10">PM10</p>
+                <h3 id="pm10Value">0 µg/m³</h3>
+                <p class="metric-status" id="pm10Status" data-i18n="safe">Safe</p>
+                <div class="wave-meter safe" id="pm10Wave" aria-label="PM10 safety wave">
+                  <svg class="wave-line" viewBox="0 0 240 80" preserveAspectRatio="none">
+                    <path d="M0 40 C30 10, 50 10, 80 40 S130 70, 160 40 S210 10, 240 40" />
+                  </svg>
+                </div>
+                <div class="wave-caption safe" id="pm10WaveLabel">Safe</div>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel micro-sd-panel">
+            <div class="panel-header">
+              <div>
+                <h2 data-i18n="micro-sd-log">Micro SD Recording</h2>
+                <p class="panel-subtitle" data-i18n="micro-sd-description">Captured readings are stored on the Micro SD card for later analysis.</p>
+              </div>
+              <button id="exportMicroSD" class="btn btn-secondary" data-i18n="export-micro-sd">Export from Micro SD</button>
+            </div>
+            <div class="record-config">
+              <label for="locationInput" data-i18n="location-label">Location</label>
+              <div class="location-row">
+                <input id="locationInput" type="text" data-i18n="location-placeholder" placeholder="Enter GPS or location name" />
+                <button id="useGPSBtn" class="btn btn-tertiary" data-i18n="use-gps">Use GPS</button>
+              </div>
+            </div>
+            <div class="pending-record-panel">
+              <div id="pendingRecordText" class="pending-record-text" data-i18n="no-pending-record">No pending compliant reading.</div>
+              <button id="savePendingBtn" class="btn btn-primary" type="button" data-i18n="save-button">Save</button>
+            </div>
+            <div class="table-wrap">
+              <table class="record-table">
+                <thead>
+                  <tr>
+                    <th data-i18n="timestamp">Timestamp</th>
+                    <th data-i18n="location">Location</th>
+                    <th data-i18n="pm25">PM2.5</th>
+                    <th data-i18n="pm10">PM10</th>
+                    <th data-i18n="sync-status">Sync Status</th>
+                    <th data-i18n="save-auto-record">Save/Auto Record</th>
+                  </tr>
+                </thead>
+                <tbody id="recordTableBody">
+                  <tr>
+                    <td colspan="6" data-i18n="no-records">No records yet.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+        </main>
+      </div>
+    </section>
+  </div>
+
+  <script src="i18n.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
